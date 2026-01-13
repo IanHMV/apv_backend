@@ -21,12 +21,10 @@ conectarDB();
 
 // Configurar CORS
 const whitelist = [process.env.FRONTEND_URL as string];
-console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
 
 
 const corsOptions = {
   origin: function (origin: any, callback: any) {
-    console.log('ORIGIN:', origin);
     if (whitelist.includes(origin) || !origin) {
       //el !origin es para que postman pueda hacer las peticiones tambien 
 
