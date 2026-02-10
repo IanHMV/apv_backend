@@ -8,42 +8,44 @@ import emailOlvideMiPassword from "../helpers/emailOlvidePassword";
 
 //funcion para registrar un nuevo veterinario *****
 const registrar = async (req: Request, res: Response) => {
-  const { nombre, email, password } = req.body;
+  // const { nombre, email, password } = req.body;
 
-  //prevenir usuarios duplicados
-  const existeUsuario = await Veterinario.findOne({ email });
+  // //prevenir usuarios duplicados
+  // const existeUsuario = await Veterinario.findOne({ email });
 
-  //si existe el usuario
-  if (existeUsuario) {
-    const error = new Error("Usuario ya registrado anteriormente");
+  // //si existe el usuario
+  // if (existeUsuario) {
+  //   const error = new Error("Usuario ya registrado anteriormente");
 
-    //detiene la ejecucion y manda el error
-    return res.status(400).json({ msg: error.message });
-  }
+  //   //detiene la ejecucion y manda el error
+  //   return res.status(400).json({ msg: error.message });
+  // }
 
-  try {
-    //guardar un nuevo veterinario
-    const veterinario = new Veterinario(req.body);
+  // try {
+  //   //guardar un nuevo veterinario
+  //   const veterinario = new Veterinario(req.body);
 
-    //guardar en la base de datos
-    //await para esperar a que se guarde
-    const veterinarioGuardado = await veterinario.save();
+  //   //guardar en la base de datos
+  //   //await para esperar a que se guarde
+  //   const veterinarioGuardado = await veterinario.save();
 
-    //Enviar el email de confirmacion *****
-    //await para esperar a que se envie
-    emailRegistro({
-      nombre: veterinarioGuardado.nombre,
-      email: veterinarioGuardado.email,
-      token: veterinarioGuardado.token
-    });
+  //   //Enviar el email de confirmacion *****
+  //   //await para esperar a que se envie
+  //   emailRegistro({
+  //     nombre: veterinarioGuardado.nombre,
+  //     email: veterinarioGuardado.email,
+  //     token: veterinarioGuardado.token
+  //   });
 
-    //imprime en consola el veterinario guardado
-    //console.log(veterinarioGuardado);
+  //   //imprime en consola el veterinario guardado
+  //   //console.log(veterinarioGuardado);
 
-    res.json({ msg: "Registrando veterinario" });
-  } catch (error) {
-    console.log(error);
-  }
+  //   res.json({ msg: "Registrando veterinario" });
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
+  console.log("The 'Register' function has been disabled to prevent possible spam registrations. / La funcion de Registrar ha sido deshabilitada para evitar posibles registros basura.")
 };
 
 //funcion para el perfil del veterinario ******
